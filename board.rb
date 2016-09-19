@@ -23,7 +23,7 @@ class Board
       raise "Please enter a valid starting value."
     end
 
-    #TODO: Raise error if end_pos is invalid 
+    #TODO: Raise error if end_pos is invalid
     start_piece = board[start]
     end_position = board[end_pos]
 
@@ -31,6 +31,9 @@ class Board
 
   end
 
+  def in_bounds
+
+  end
 
   def [](pos)
     x, y = pos

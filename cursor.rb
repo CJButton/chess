@@ -75,9 +75,32 @@ class Cursor
     return input
   end
 
-  def handle_key(key)
+  def update_pos(directions)
+    moves = MOVES[directions]
+    x = cursor_pos[0] + moves[0]
+    y = cursor_pos[1] + moves[1]
+    @cursor_pos = [x, y] unless board.in_bounds
+    #TODO: Rescue
+    nil
   end
 
-  def update_pos(diff)
+  def handle_key(key)
+    case key
+
+    when :space || :return
+      @cursor_pos
+    when :left
+      update_pos(:left)
+    when :right
+      update_pos(:right)
+    when :up
+      update_pos(:up)
+    when :down
+      update_pos(:down)
+    when :ctrl_c
+      Process.exit(0)
+    end
   end
+
+
 end
