@@ -21,7 +21,12 @@ class Display
         rendered_piece = "| #{piece[0].name} |"
         if @cursor.cursor_pos == [row_index, piece_index]
           rendered_piece = rendered_piece.colorize(:background => :blue)
+        elsif row_index.even? && piece_index.even?
+          rendered_piece = rendered_piece.colorize(:color => :white, :background => :black)
+        elsif row_index.odd? && piece_index.odd?
+          rendered_piece = rendered_piece.colorize(:color => :white, :background => :black)
         end
+
         print rendered_piece
 
       end
