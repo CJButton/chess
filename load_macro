@@ -2,5 +2,8 @@
 load "board.rb"
 load "rook.rb"
 b = Board.new
+b.board[0][3] = Piece.new(b, [0, 3], "peacer", :white)
+b.board[4][0] = Piece.new(b, [4, 0], "his friend", :black)
 r = Rook.new(b, [0, 0], "Dumby the rook", :black)
-r.moves
+arr = r.find_straight_lines(r.position)
+c = r.filter_moves(arr)
