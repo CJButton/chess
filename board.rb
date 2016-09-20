@@ -1,19 +1,19 @@
 
 require_relative "null"
-
+require "byebug"
 class Board
 
-  attr_reader :board
+  attr_accessor :board
 
   def initialize
-    @board = Array.new(8) { Array.new(8) {[]}}
+    @board = Array.new(8) { Array.new(8)}
     populate
   end
 
   def populate
-    board.each do |row|
-      row.each do |square|
-        square << NullPiece.instance
+    board.each_with_index do |row, row_i|
+      row.each_with_index do |square, square_i|
+        board[row_i][square_i] = NullPiece.instance
       end
     end
   end
@@ -34,6 +34,7 @@ class Board
   def in_bounds
 
   end
+
 
   def [](pos)
     x, y = pos

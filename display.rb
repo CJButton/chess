@@ -15,7 +15,6 @@ class Display
 
   def render
     blank_space = Array.new(8) {"     "}
-    puts "_____________________________________"
 
     @board.each_with_index do |row, row_index|
       blank_space.each_with_index do |top_border, top_idx|

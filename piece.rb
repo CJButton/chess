@@ -1,12 +1,18 @@
 
-
+#require_relative 'board'
 
 class Piece
   attr_reader :name
-  def initialize(board, position)
+  attr_accessor :position
+  def initialize(board, position, name, color)
     @board = board
-    @position = nil
+    @position = position
     @name = "p"
+    @color = color
+  end
+
+  def valid_moves
+
   end
 
   def moves

@@ -1,0 +1,6 @@
+
+load "board.rb"
+load "rook.rb"
+b = Board.new
+r = Rook.new(b, [0, 0], "Dumby the rook", :black)
+r.moves
