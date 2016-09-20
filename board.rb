@@ -1,5 +1,5 @@
 
-require_relative "piece"
+require_relative "null"
 
 class Board
 
@@ -13,7 +13,7 @@ class Board
   def populate
     board.each do |row|
       row.each do |square|
-        square << Piece.new
+        square << NullPiece.instance
       end
     end
   end
