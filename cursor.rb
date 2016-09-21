@@ -32,11 +32,13 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :confirmed_position
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @confirmed_position = nil
+
   end
 
   def get_input
@@ -79,7 +81,7 @@ class Cursor
     moves = MOVES[directions]
     x = cursor_pos[0] + moves[0]
     y = cursor_pos[1] + moves[1]
-    @cursor_pos = [x, y] unless board.in_bounds
+    @cursor_pos = [x, y] #unless board.in_bounds(@cursor_pos)
     #TODO: Rescue
     nil
   end
@@ -88,7 +90,7 @@ class Cursor
     case key
 
     when :space || :return
-      @cursor_pos
+      @confirmed_position = @cursor_pos
     when :left
       update_pos(:left)
     when :right

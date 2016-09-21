@@ -2,8 +2,16 @@
 load "board.rb"
 load "rook.rb"
 b = Board.new
-b.board[0][3] = Piece.new(b, [0, 3], "peacer", :white)
-b.board[4][0] = Piece.new(b, [4, 0], "his friend", :black)
-r = Rook.new(b, [0, 0], "Dumby the rook", :black)
-arr = r.find_straight_lines(r.position)
+b.board[1][5] = Piece.new(b, [1, 5], "♞", :black)
+b.board[1][1] = Piece.new(b, [1, 1], "♞", :black)
+b.board[5][5] = Piece.new(b, [5, 5], "♞", :black)
+b.board[0][6] = Piece.new(b, [0, 6], "♘ ", :white)
+b.board[7][5] = Piece.new(b, [7, 5], "♘ ", :white)
+
+r = Rook.new(b, [3, 3], "rookie", :black)
+
+
+
+arr = r.find_diagonal_lines(r.position)
 c = r.filter_moves(arr)
+d = r.remove_blocked_path(c)

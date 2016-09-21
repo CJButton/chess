@@ -1,6 +1,7 @@
 require_relative "board"
 require "colorize"
 require_relative "cursor"
+require 'byebug'
 
 
 class Display
@@ -30,7 +31,7 @@ class Display
 
       print "\n"
       row.each_with_index do |piece, piece_index|
-        rendered_piece = " #{piece[0].name} "
+        rendered_piece = " #{piece.name} "
         if @cursor.cursor_pos == [row_index, piece_index]
           rendered_piece = rendered_piece.colorize(:background => :blue)
         elsif row_index.even? && piece_index.even?
@@ -63,10 +64,13 @@ class Display
 
 
   def render_loop
-    loop do
-      render
-      @cursor.get_input
-      system("clear")
+    #byebug
+    until @cursor.confirmed_position != nil
+      # loop do
+        render
+        @cursor.get_input
+        system("clear")
+      # end
     end
   end
 
