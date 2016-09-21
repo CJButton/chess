@@ -54,13 +54,13 @@ class Board
     x , y = start
     i , j = end_pos
 
-    if board[x][y].is_a?(NullPiece)
-      raise "Please enter a valid starting value."
-    end
+    # if board[x][y].is_a?(NullPiece)
+    #   raise "Please enter a valid starting value."
+    # end
 
     #TODO: Raise error if end_pos is invalid
-    start_piece = board[x][y]
-    end_position = board[i][j]
+    start_piece = @board[x][y]
+    end_position = @board[i][j]
 
     start_piece, end_position = end_position, start_piece
 

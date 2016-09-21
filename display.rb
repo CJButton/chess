@@ -5,9 +5,11 @@ require 'byebug'
 
 
 class Display
+  attr_accessor :cursor, :system_message
   def initialize(board)
     @board = board.board
     @cursor = Cursor.new([0,0], board)
+    @system_message = ""
   end
 
   def move(new_pos)
@@ -58,7 +60,9 @@ class Display
         print rendered_bottom_border
       end
       print "\n"
+
     end
+    print @system_message
     nil
   end
 

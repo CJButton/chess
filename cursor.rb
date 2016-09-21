@@ -32,7 +32,7 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board, :confirmed_position
+  attr_accessor :cursor_pos, :board, :confirmed_position
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
@@ -89,7 +89,7 @@ class Cursor
   def handle_key(key)
     case key
 
-    when :space || :return
+    when :space, :return
       @confirmed_position = @cursor_pos
     when :left
       update_pos(:left)

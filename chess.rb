@@ -13,16 +13,22 @@ class Chess
 
   def play
     until game_over?
+    @display.system_message = "Choose your first position."
+    @display.cursor.confirmed_position = nil
     @display.render_loop
-    start_pos = @cursor.confirmed_position
+    start_pos = @display.cursor.confirmed_position
+
+    @display.system_message = "Choose your second position."
+    @display.cursor.confirmed_position = nil
+    @display.render_loop
+    end_pos = @display.cursor.confirmed_position
+    
+    @display.cursor.confirmed_position = nil
+    @display.system_message = "Trying to move."
+    @display.render_loop
+    @board.move(start_pos,end_pos)
 
     @display.render_loop
-    p start_pos
-    end_pos = @cursor.confirmed_position
-
-    if valid_move?
-      move(start_pos, end_pos)
-    end
 
     end
   end
